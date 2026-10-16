@@ -9,6 +9,15 @@ data = ticker.history(period="1y")
 bars = []
 for date, row in data.iterrows():
     bar = PriceBar(
-        symbol='SBK.JO'
+        symbol='SBK.JO',
+        date = date.date(),
+        open=Decimal(str(row['Open'])),
+        high=Decimal(str(row['High'])),
+        low= Decimal(str(row['Low'])),
+        close= Decimal(str(row['Close'])),
+        volume=int(row['Volume'])
+        
         
     )
+    bars.append(bar)
+print(bars[0])
