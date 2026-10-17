@@ -15,8 +15,12 @@ class PriceBar(BaseModel):
     def check_high_low(self):
         if self.high < max(self.open, self.close):
             raise ValueError('high can not be lower than close or low')
+        elif self.low > min(self.open, self.close):
+            raise ValueError('Low can not be above close and open')
         else:
             return self
+        
+  
             
         
     
