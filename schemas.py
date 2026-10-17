@@ -10,6 +10,7 @@ class PriceBar(BaseModel):
     low: Decimal
     close: Decimal
     volume: int
+    
     @model_validator(mode='after')
     def check_high_low(self):
         if self.high < max(self.open, self.close):
